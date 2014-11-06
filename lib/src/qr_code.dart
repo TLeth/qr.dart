@@ -29,8 +29,7 @@ class QrCode {
         moduleCount = typeNumber * 4 + 17,
         _modules = new List<List<bool>>() {
     requireArgument(typeNumber > 0 && typeNumber < 11, 'typeNumber');
-    requireArgument(QrErrorCorrectLevel.levels.indexOf(errorCorrectLevel) >= 0,
-        'errorCorrectLevel');
+    requireArgument(QrErrorCorrectLevel.levels.indexOf(errorCorrectLevel) >= 0, 'errorCorrectLevel');
 
     for (var row = 0; row < moduleCount; row++) {
       _modules.add(new List<bool>(moduleCount));
@@ -64,9 +63,7 @@ class QrCode {
 
         if (col + c <= -1 || moduleCount <= col + c) continue;
 
-        if ((0 <= r && r <= 6 && (c == 0 || c == 6)) ||
-            (0 <= c && c <= 6 && (r == 0 || r == 6)) ||
-            (2 <= r && r <= 4 && 2 <= c && c <= 4)) {
+        if ((0 <= r && r <= 6 && (c == 0 || c == 6)) || (0 <= c && c <= 6 && (r == 0 || r == 6)) || (2 <= r && r <= 4 && 2 <= c && c <= 4)) {
           _modules[row + r][col + c] = true;
         } else {
           _modules[row + r][col + c] = false;
@@ -162,7 +159,8 @@ class QrCode {
     var data = (this.errorCorrectLevel << 3) | maskPattern;
     var bits = QrUtil.getBCHTypeInfo(data);
 
-    var i, mod;
+    var i;
+    var mod;
 
     // vertical
     for (i = 0; i < 15; i++) {
@@ -267,8 +265,7 @@ class QrCode {
     _mapData(_dataCache, maskPattern);
   }
 
-  static List<int> _createData(int typeNumber, int errorCorrectLevel,
-      List<QrByte> dataList) {
+  static List<int> _createData(int typeNumber, int errorCorrectLevel, List<QrByte> dataList) {
 
     var rsBlocks = QrRsBlock.getRSBlocks(typeNumber, errorCorrectLevel);
 

@@ -6,48 +6,7 @@ import 'mode.dart' as QrMode;
 import 'polynomial.dart';
 import 'qr_code.dart';
 
-const List<List<int>> _PATTERN_POSITION_TABLE = const [
-  const [],
-  const [6, 18],
-  const [6, 22],
-  const [6, 26],
-  const [6, 30],
-  const [6, 34],
-  const [6, 22, 38],
-  const [6, 24, 42],
-  const [6, 26, 46],
-  const [6, 28, 50],
-  const [6, 30, 54],
-  const [6, 32, 58],
-  const [6, 34, 62],
-  const [6, 26, 46, 66],
-  const [6, 26, 48, 70],
-  const [6, 26, 50, 74],
-  const [6, 30, 54, 78],
-  const [6, 30, 56, 82],
-  const [6, 30, 58, 86],
-  const [6, 34, 62, 90],
-  const [6, 28, 50, 72, 94],
-  const [6, 26, 50, 74, 98],
-  const [6, 30, 54, 78, 102],
-  const [6, 28, 54, 80, 106],
-  const [6, 32, 58, 84, 110],
-  const [6, 30, 58, 86, 114],
-  const [6, 34, 62, 90, 118],
-  const [6, 26, 50, 74, 98, 122],
-  const [6, 30, 54, 78, 102, 126],
-  const [6, 26, 52, 78, 104, 130],
-  const [6, 30, 56, 82, 108, 134],
-  const [6, 34, 60, 86, 112, 138],
-  const [6, 30, 58, 86, 114, 142],
-  const [6, 34, 62, 90, 118, 146],
-  const [6, 30, 54, 78, 102, 126, 150],
-  const [6, 24, 50, 76, 102, 128, 154],
-  const [6, 28, 54, 80, 106, 132, 158],
-  const [6, 32, 58, 84, 110, 136, 162],
-  const [6, 26, 54, 82, 110, 138, 166],
-  const [6, 30, 58, 86, 114, 142, 170]
-];
+const List<List<int>> _PATTERN_POSITION_TABLE = const [const [], const [6, 18], const [6, 22], const [6, 26], const [6, 30], const [6, 34], const [6, 22, 38], const [6, 24, 42], const [6, 26, 46], const [6, 28, 50], const [6, 30, 54], const [6, 32, 58], const [6, 34, 62], const [6, 26, 46, 66], const [6, 26, 48, 70], const [6, 26, 50, 74], const [6, 30, 54, 78], const [6, 30, 56, 82], const [6, 30, 58, 86], const [6, 34, 62, 90], const [6, 28, 50, 72, 94], const [6, 26, 50, 74, 98], const [6, 30, 54, 78, 102], const [6, 28, 54, 80, 106], const [6, 32, 58, 84, 110], const [6, 30, 58, 86, 114], const [6, 34, 62, 90, 118], const [6, 26, 50, 74, 98, 122], const [6, 30, 54, 78, 102, 126], const [6, 26, 52, 78, 104, 130], const [6, 30, 56, 82, 108, 134], const [6, 34, 60, 86, 112, 138], const [6, 30, 58, 86, 114, 142], const [6, 34, 62, 90, 118, 146], const [6, 30, 54, 78, 102, 126, 150], const [6, 24, 50, 76, 102, 128, 154], const [6, 28, 54, 80, 106, 132, 158], const [6, 32, 58, 84, 110, 136, 162], const [6, 26, 54, 82, 110, 138, 166], const [6, 30, 58, 86, 114, 142, 170]];
 
 const int G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
 const int G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0);
@@ -80,8 +39,7 @@ int getBCHDigit(int data) {
   return digit;
 }
 
-List<int> getPatternPosition(int typeNumber) =>
-    _PATTERN_POSITION_TABLE[typeNumber - 1];
+List<int> getPatternPosition(int typeNumber) => _PATTERN_POSITION_TABLE[typeNumber - 1];
 
 bool getMask(int maskPattern, int i, int j) {
   switch (maskPattern) {
@@ -174,7 +132,8 @@ num getLostPoint(QrCode qrCode) {
   var moduleCount = qrCode.moduleCount;
 
   var lostPoint = 0.0;
-  int row, col;
+  int row;
+  int col;
 
   // LEVEL1
   for (row = 0; row < moduleCount; row++) {

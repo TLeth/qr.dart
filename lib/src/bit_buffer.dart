@@ -8,8 +8,7 @@ class QrBitBuffer extends Object with ListMixin<bool> {
 
   QrBitBuffer() : _buffer = new List<int>();
 
-  void operator[]=(int index, bool value) =>
-      throw new UnsupportedError('cannot change');
+  void operator []=(int index, bool value) => throw new UnsupportedError('cannot change');
 
   bool operator [](int index) {
     final bufIndex = index ~/ 8;
